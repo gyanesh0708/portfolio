@@ -1,11 +1,15 @@
 import {
+  certifications,
   education,
   experience,
+  industries,
   navLinks,
   profile,
   projects,
   skillGroups,
 } from './data/profile'
+
+const photoUrl = `${import.meta.env.BASE_URL}${profile.photo}`
 
 function SectionHeading({
   id,
@@ -76,20 +80,52 @@ function App() {
           id="top"
           className="animate-fade-up pt-16 pb-20 sm:pt-24 sm:pb-28"
         >
-          <p className="font-mono text-sm text-cyan-400/90 mb-4">
-            {profile.location}
-          </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
-            {profile.name.split(' ')[0]}{' '}
-            <span className="gradient-text">{profile.name.split(' ').slice(1).join(' ')}</span>
-          </h1>
-          <p className="mt-4 text-xl sm:text-2xl text-slate-300 font-medium">
-            {profile.title}
-          </p>
-          <p className="mt-6 max-w-2xl text-lg text-slate-400 leading-relaxed">
-            {profile.tagline}
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_minmax(260px,340px)] lg:gap-16">
+            <div>
+              <p className="font-mono text-sm text-cyan-400/90 mb-4">
+                {profile.location}
+              </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-white leading-[1.1]">
+                {profile.name.split(' ')[0]}{' '}
+                <span className="gradient-text">
+                  {profile.name.split(' ').slice(1).join(' ')}
+                </span>
+              </h1>
+              <p className="mt-4 text-xl sm:text-2xl text-slate-300 font-medium">
+                {profile.title}
+              </p>
+
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label="AWS certifications">
+                {certifications.map((cert) => (
+                  <li
+                    key={cert.name}
+                    className="inline-flex items-center gap-2 rounded-full border border-amber-500/35 bg-amber-500/10 px-3 py-1.5 text-xs font-medium text-amber-100/95"
+                    title={cert.name}
+                  >
+                    <span className="font-mono text-amber-400/90" aria-hidden>
+                      AWS
+                    </span>
+                    {cert.short}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6 flex flex-wrap gap-2" aria-label="Industry focus">
+                {industries.map((item) => (
+                  <span
+                    key={item.label}
+                    title={item.detail}
+                    className="rounded-md bg-slate-800/80 border border-slate-700/90 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-cyan-200/90"
+                  >
+                    {item.label}
+                  </span>
+                ))}
+              </div>
+
+              <p className="mt-6 max-w-2xl text-lg text-slate-400 leading-relaxed">
+                {profile.tagline}
+              </p>
+              <div className="mt-10 flex flex-wrap gap-3">
             <a
               href={`mailto:${profile.email}`}
               className="inline-flex items-center rounded-full bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-400 transition-colors"
@@ -117,6 +153,26 @@ function App() {
             >
               {profile.phone}
             </a>
+              </div>
+            </div>
+
+            <figure className="relative mx-auto w-full max-w-[340px] lg:max-w-none lg:mx-0">
+              <div
+                className="absolute -inset-1 rounded-[1.35rem] bg-gradient-to-br from-cyan-400/40 via-cyan-500/10 to-transparent blur-sm"
+                aria-hidden
+              />
+              <div className="relative overflow-hidden rounded-2xl border border-slate-700/80 bg-[#141c2f] shadow-2xl shadow-cyan-950/40">
+                <img
+                  src={photoUrl}
+                  alt={profile.photoAlt}
+                  width={680}
+                  height={850}
+                  className="aspect-[4/5] w-full object-cover object-[center_18%]"
+                  fetchPriority="high"
+                />
+              </div>
+              <figcaption className="sr-only">{profile.name}</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -134,10 +190,23 @@ function App() {
             </div>
             <div className="rounded-xl border border-slate-800 bg-[#141c2f]/60 p-4">
               <dt className="text-xs font-mono uppercase tracking-wider text-slate-500">
-                Focus
+                Certifications
               </dt>
-              <dd className="mt-1 text-slate-200">
-                Backend leadership, cloud-native delivery, API design
+              <dd className="mt-1 text-slate-200 text-sm leading-relaxed">
+                {certifications.map((c) => c.name).join(' · ')}
+              </dd>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-[#141c2f]/60 p-4 sm:col-span-2">
+              <dt className="text-xs font-mono uppercase tracking-wider text-slate-500">
+                Domains
+              </dt>
+              <dd className="mt-2 space-y-2">
+                {industries.map((item) => (
+                  <p key={item.label} className="text-sm text-slate-300">
+                    <span className="font-medium text-cyan-200/90">{item.label}</span>
+                    <span className="text-slate-500"> — {item.detail}</span>
+                  </p>
+                ))}
               </dd>
             </div>
           </dl>
@@ -222,6 +291,9 @@ function App() {
                 </h3>
                 <p className="mt-1 text-sm text-slate-500">
                   {project.client} · {project.company}
+                  {project.domain != null && (
+                    <span className="text-cyan-600/80"> · {project.domain}</span>
+                  )}
                 </p>
                 <p className="mt-4 flex-1 text-slate-400 text-[15px] leading-relaxed">
                   {project.description}
@@ -252,8 +324,9 @@ function App() {
         >
           <SectionHeading eyebrow="06" title="Contact" id="contact-heading" />
           <p className="max-w-xl text-slate-400 mb-8">
-            Open to senior backend, lead, and architecture roles. Reach out for
-            collaborations or consulting on Node.js and AWS delivery.
+            I am open to lead engineering, principal backend, and cloud-architecture
+            roles — especially where banking, insurance, aviation, or booking
+            platforms need someone who has shipped in those worlds. Say hello.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a

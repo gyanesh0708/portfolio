@@ -2,9 +2,9 @@ export const profile = {
   name: 'Gyanesh Saikhedkar',
   title: 'Lead Technology · Node.js, AWS & Kubernetes',
   tagline:
-    'I build backend systems that stay up when money, claims, flights, and bookings are on the line — from Lambda and Kubernetes in insurance to microservices in banking and high-traffic booking platforms.',
+    'I build backend systems that stay up when money, claims, flights, and bookings are on the line — from Lambda and Kubernetes in insurance to microservices in banking and multi-brand cab marketplaces.',
   summary:
-    'For eight years I have turned complex business rules into calm, observable APIs. I lead small teams through design, delivery, and production hardening on AWS — wiring fraud ML into insurance flows, money movement for corporate banking, offline entertainment for aviation and rail, and end-to-end booking and partner integrations for mobility products. I have extensive, daily hands-on experience with Claude, Cursor, and GitHub Copilot — using them to accelerate design, implementation, tests, and refactors while keeping ownership, security, and review standards high. I care about clear contracts (Swagger), sensible observability, and code that the next engineer can own with confidence.',
+    'For eight years I have turned complex business rules into calm, observable APIs. I lead small teams through design, delivery, and production hardening on AWS — wiring fraud ML into insurance flows, money movement for corporate banking, offline entertainment for aviation and rail, and end-to-end mobility products. As a freelance engineer with Mojoboxx, I work on a cab booking platform that aggregates leading supply partners and powers IndiGo, ixigo, RailYatri, Swiggy, Yatra, and more — from search and fare through confirmation, ops tooling, customer support, and agentic booking flows. I have extensive, daily hands-on experience with Claude, Cursor, and GitHub Copilot — using them to accelerate design, implementation, tests, and refactors while keeping ownership, security, and review standards high. I care about clear contracts (Swagger), sensible observability, and code that the next engineer can own with confidence.',
   location: 'Pune & Indore, India',
   email: 'gyanesh.gyanesh@gmail.com',
   phone: '+91 9599962318',
@@ -29,7 +29,10 @@ export const industries = [
   { label: 'Banking', detail: 'Corporate microservices & money movement' },
   { label: 'Insurance', detail: 'Fraud risk, shared services, serverless' },
   { label: 'Aviation', detail: 'In-flight & transit entertainment at scale' },
-  { label: 'Booking platforms', detail: 'Search, fare, partner APIs & payments' },
+  {
+    label: 'Booking platforms',
+    detail: 'Multi-partner cab aggregation, OTA integrations, support & agentic booking',
+  },
 ] as const
 
 export const skillGroups = [
@@ -95,6 +98,28 @@ export const experience: Experience[] = [
       'Shape team practices around releases, API design, and AWS-native patterns so shared services stay reliable under real claim volume.',
     ],
     tech: ['Node.js', 'AWS Lambda', 'Kubernetes', 'Docker'],
+  },
+  {
+    role: 'Freelance · Backend Engineer',
+    company: 'Mojoboxx',
+    location: 'Remote · India',
+    period: 'Ongoing (freelance)',
+    highlights: [
+      'Build and extend a cab booking platform that aggregates top cab partners behind one consistent booking experience for major travel and lifestyle brands.',
+      'Own flows end to end — search, fare, partner orchestration, booking confirmation, payments, and post-booking operations for IndiGo, ixigo, RailYatri, Swiggy, Yatra, and similar partners.',
+      'Deliver a customer-support platform for agents to manage trips, exceptions, and partner escalations at scale.',
+      'Introduce agentic cab booking — AI-assisted flows that help complete and recover bookings faster while keeping humans in the loop for edge cases.',
+    ],
+    tech: [
+      'Node.js',
+      'Express',
+      'REST APIs',
+      'MongoDB',
+      'MySQL',
+      'AWS',
+      'Partner integrations',
+      'Swagger',
+    ],
   },
   {
     role: 'Senior Software Engineer',
@@ -183,13 +208,13 @@ export const projects: Project[] = [
     tech: ['Node.js', 'Oracle DB', 'Docker', 'Kubernetes', 'AWS'],
   },
   {
-    name: 'Mobility booking platform',
-    client: 'Travel & cab marketplace',
-    company: 'Product engineering',
+    name: 'Multi-partner cab booking (IndigoCab)',
+    client: 'IndiGo, ixigo, RailYatri, Swiggy, Yatra',
+    company: 'Mojoboxx',
     domain: 'Booking platforms',
     description:
-      'Backend for search, fare logic, bookings, payments, and partner integrations — APIs built for partners, ops, and high booking volume.',
-    tech: ['Node.js', 'REST', 'AWS', 'MongoDB', 'MySQL'],
+      'Aggregated marketplace backend: unify top cab supply partners, run the full booking journey through confirmation, and expose brand-specific experiences for OTAs and apps — plus agent tooling, customer support, and agentic booking to resolve trips quickly.',
+    tech: ['Node.js', 'Express', 'REST', 'AWS', 'MongoDB', 'MySQL', 'Swagger'],
   },
   {
     name: 'VuScreen',

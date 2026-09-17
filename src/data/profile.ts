@@ -4,7 +4,7 @@ export const profile = {
   tagline:
     'I build backend systems that stay up when money, claims, flights, and bookings are on the line — from Lambda and Kubernetes in insurance to microservices in banking and high-traffic booking platforms.',
   summary:
-    'For eight years I have turned complex business rules into calm, observable APIs. I lead small teams through design, delivery, and production hardening on AWS — wiring fraud ML into insurance flows, money movement for corporate banking, offline entertainment for aviation and rail, and end-to-end booking and partner integrations for mobility products. I care about clear contracts (Swagger), sensible observability, and code that the next engineer can own with confidence.',
+    'For eight years I have turned complex business rules into calm, observable APIs. I lead small teams through design, delivery, and production hardening on AWS — wiring fraud ML into insurance flows, money movement for corporate banking, offline entertainment for aviation and rail, and end-to-end booking and partner integrations for mobility products. I have extensive, daily hands-on experience with Claude, Cursor, and GitHub Copilot — using them to accelerate design, implementation, tests, and refactors while keeping ownership, security, and review standards high. I care about clear contracts (Swagger), sensible observability, and code that the next engineer can own with confidence.',
   location: 'Pune & Indore, India',
   email: 'gyanesh.gyanesh@gmail.com',
   phone: '+91 9599962318',
@@ -60,6 +60,16 @@ export const skillGroups = [
   {
     label: 'Platforms',
     items: ['Linux', 'CentOS 7', 'Windows', 'Git', 'VS Code'],
+  },
+  {
+    label: 'AI-assisted development',
+    items: [
+      'Claude',
+      'Cursor',
+      'GitHub Copilot',
+      'Agentic workflows & multi-file edits',
+      'AI-assisted debugging, docs & code review',
+    ],
   },
 ] as const
 
